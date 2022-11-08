@@ -1,0 +1,5 @@
+Introduction to the concepts underlying computer programming to accomplish
+desired tasks, including but not limited to design and execution of programs;
+sequential nature of programs; use of variables and assignment; control flow;
+input/output; design and use of functions; Structured and object-oriented
+methodologies.
