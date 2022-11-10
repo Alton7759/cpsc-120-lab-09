@@ -1,46 +1,67 @@
-// TODO: add a header
-
+// Christian Alton bonilla
+// CPSC 120-01
+// 2022-11-09
+// Alton77@csu.fullerton.edu
+// @alton7759
+//
+// Lab 09-01
+// Partners: @annavera38
+//
+// Calculate and return the Olympics average of scores.
+//
 #include <iostream>
 #include <string>
 #include <vector>
 
-// Calculate and return the Olympics average of scores.
-// The return value is the mean of all elements of scores, except for the
-// minimum and maximum elements.
-double JudgeAverage(const std::vector<double>& scores) {
-  // TODO: write statements to implement this function, and delete this comment
-  // Hint:
-  // - Write a loop that finds the minimum score.
-  // - Write another loop that finds the maximum score.
-  // - Write another loop that computes the total of all of the elements.
-  // - Subtract the minimum and maximum from the total.
-  // - Divide by the number of remaining elements.
-  //   (The minimum and maximum don't count.)
-  return 0.0; // TODO: replace this return statement with one that actually works
+double JudgeAverage(const std::vector<std::string>& scores) {
+  double sum{0};
+  for (const auto& bruh : scores) {
+    sum += std::stod(bruh);
+    // std::cout << sum << "sum\n";
+  }
+  double ave = sum / scores.size();
+  // std::cout << scores.size() << "s\n";
+  return ave;
 }
 
 int main(int argc, char* argv[]) {
   std::vector<std::string> arguments(argv, argv + argc);
+  double max{0};
+  int low_l{0};
+  int max_l{0};
+  int i{0};
+  arguments.erase(arguments.begin());
+  if (arguments.size() < 3) {
+    std::cout << "error: you must give at least three scores\n";
+    return 1;
+  }
+  double low{std::stod(arguments.at(0))};
+  for (const std::string& m : arguments) {
+    if (std::stod(m) > max) {
+      max = std::stod(m);
+      // std::cout << max << "M\n";
+      max_l = i;
+    }
+    i++;
+  }
+  arguments.erase(arguments.begin() + max_l);
+  i = 0;
+  for (const std::string& w : arguments) {
+    if (std::stod(w) < low) {
+      low = std::stod(w);
+      // std::cout << low << "L\n";
+      low_l = i;
+    }
+    i++;
+  }
+  arguments.erase(arguments.begin() + low_l);
 
-  // TODO: validate that at least three arguments were provided.
-  // If not, print
-  // error: you must give at least three scores
-  // and return a non-zero exit code.
-
-  // TODO: Create a vector of doubles that will work as the scores argument
-  // for the JudgeAverage function.
-  // Use the Build a Vector pattern to write code that:
-  //  - declares an empty vector of doubles
-  //  - uses a loop to convert each argument to a double/float number, and
-  //    use push_back to add the number to the back of the vector
-  //  - the loop needs to skip the first element of arguments, which contains
-  //    the command name "./judge"
-
-  // TODO: Call the JudgeAverage function to calculate the average.
-  // Store the return value of the function in a variable.
-
-  // TODO: Use std::cout to print a message of the form
-  // average is *the return value*
+  /*for (auto test : arguments) {
+    std::cout << test << " ";
+  }
+  std::cout << "\n" << max_l << "m " << low_l << "l\n";
+*/
+  std::cout << "average is " << JudgeAverage(arguments) << "\n";
 
   return 0;
 }
