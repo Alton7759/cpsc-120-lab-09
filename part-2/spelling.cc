@@ -13,9 +13,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-// Read all the words from the given filename, and return them as a vector
-// of strings.
-// If the file cannot be opened, return an empty vector.
+
 std::vector<std::string> ReadWords(const std::string& filename) {
   std::vector<std::string> words;
   std::ifstream input_file_stream{filename};
